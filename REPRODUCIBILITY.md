@@ -4,7 +4,7 @@
 
 The released scored population contains 1,042 unique candidate attacks from 1,042 BigCodeBench tasks, reconstructed from AttackSelection commit `1a0b4c6bf5a125a55b7512fb5ff910da437ad041` and its full 1,140-task configuration. Of these, 284 attacks both preserve main-task correctness and achieve the side task. After applying the stored attacker submission threshold, 398 unique attacks enter at least one selective-audit game, including 94 unique successful-and-correct attacks. The game export contains 2,752 attack occurrences across the original 50 train/test folds.
 
-The monitor cache contains exactly 3,126 responses: one response for each attack under each of the three preregistered information conditions. Prompts, raw responses, parsed values, model identifiers, token usage, and retries are retained. API credentials are not retained.
+The monitor cache contains exactly 3,126 responses: one response for each attack under each of the three pre-specified information conditions. Prompts, raw responses, parsed values, model identifiers, token usage, and retries are retained. API credentials are not retained.
 
 ## One-command reproduction from cached responses
 
@@ -41,7 +41,7 @@ Install the versions in `requirements-paper.lock`, check out the recorded Attack
 oracle-gap paper-import --repo work/public/AttackSelection --config stripped/BCB_Set/case_study_full_1140_decomposition.json --records-output work/paper_full/records.jsonl --games-output work/paper_full/games.json --budgets 0.002,0.005,0.01,0.02
 ```
 
-The exact experimental choices and decision rule are frozen in `research/experiment_spec.json`.
+The experimental choices and decision rule are recorded in `research/experiment_spec.json`. This was not registered with an independent public timestamp, so the repository does not describe it as a formal preregistration.
 
 ## Resuming model scoring
 

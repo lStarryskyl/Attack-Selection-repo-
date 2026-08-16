@@ -73,7 +73,7 @@ Public BigCodeBench does not provide the team’s generated attacks, fold assign
 
 The generic evaluator reports empirical detection rates. The paper-aligned ranking run uses `k / (k + V - C)`, where `k` is the audit count, `V` is the number of successful-and-correct submitted attacks, and `C` is the number caught. These benchmark estimates are not deployment guarantees.
 
-For the completed expanded Nemotron experiment, see `REPRODUCIBILITY.md` for the one-command cached reproduction, `research/experiment_spec.json` for the frozen design, and `FINDINGS.md` for the research interpretation and comparison with the prior ranking analysis.
+For the completed expanded Nemotron experiment, see `REPRODUCIBILITY.md` for the one-command cached reproduction, `research/experiment_spec.json` for the recorded analysis plan, and `FINDINGS.md` for the research interpretation and comparison with the prior ranking analysis.
 
 ## Reproduce the paper ranking gate
 

@@ -70,6 +70,8 @@ The score output is also highly quantized. Code-only has four distinct values an
 
 ## What is and is not supported
 
+The three conditions and primary contrasts were specified before the expanded paid run, after an earlier 438-candidate exploratory run. The plan was not registered with an independent public timestamp, so this should be described as a pre-specified expanded follow-up rather than a formal preregistration.
+
 Supported: for this Nemotron prompt and decoding setup, exact-side-task access did not improve mean clustered-bootstrap safety over main-task access when ranking only submitted attacks at the original monitor's fixed audit count.
 
 Not supported: that side-task access has no value at a common calibrated FPR; that it would falsely flag honest code; or that a stronger/differently prompted monitor would behave the same way.

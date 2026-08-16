@@ -6,7 +6,7 @@ Earlier work showed that changing the ranking signal can improve which submitted
 
 ## Primary result
 
-The preregistered contrast is exact side task minus main task:
+The pre-specified contrast is exact side task minus main task:
 
 | Audit budget | Safety difference | 95% attack-clustered interval |
 |---:|---:|---:|
