@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="460" viewBox="0 0 760 460">
+<rect width="100%" height="100%" fill="white"/>
+<line x1="80" y1="395.0" x2="735" y2="395.0" stroke="#dddddd"/>
+<text x="70" y="399.0" text-anchor="end" font-family="Arial" font-size="12">0.64</text>
+<line x1="80" y1="323.0" x2="735" y2="323.0" stroke="#dddddd"/>
+<text x="70" y="327.0" text-anchor="end" font-family="Arial" font-size="12">0.71</text>
+<line x1="80" y1="251.0" x2="735" y2="251.0" stroke="#dddddd"/>
+<text x="70" y="255.0" text-anchor="end" font-family="Arial" font-size="12">0.79</text>
+<line x1="80" y1="179.0" x2="735" y2="179.0" stroke="#dddddd"/>
+<text x="70" y="183.0" text-anchor="end" font-family="Arial" font-size="12">0.86</text>
+<line x1="80" y1="107.0" x2="735" y2="107.0" stroke="#dddddd"/>
+<text x="70" y="111.0" text-anchor="end" font-family="Arial" font-size="12">0.93</text>
+<line x1="80" y1="35.0" x2="735" y2="35.0" stroke="#dddddd"/>
+<text x="70" y="39.0" text-anchor="end" font-family="Arial" font-size="12">1.00</text>
+<polyline points="80.0,370.2 189.2,268.7 371.1,154.6 735.0,81.8" fill="none" stroke="#1769aa" stroke-width="2.5"/>
+<circle cx="80.0" cy="370.2" r="4" fill="#1769aa"/>
+<circle cx="189.2" cy="268.7" r="4" fill="#1769aa"/>
+<circle cx="371.1" cy="154.6" r="4" fill="#1769aa"/>
+<circle cx="735.0" cy="81.8" r="4" fill="#1769aa"/>
+<rect x="540" y="30" width="16" height="3" fill="#1769aa"/>
+<text x="562" y="35" font-family="Arial" font-size="12">flat</text>
+<polyline points="80.0,358.6 189.2,254.5 371.1,145.3 735.0,72.4" fill="none" stroke="#d1495b" stroke-width="2.5"/>
+<circle cx="80.0" cy="358.6" r="4" fill="#d1495b"/>
+<circle cx="189.2" cy="254.5" r="4" fill="#d1495b"/>
+<circle cx="371.1" cy="145.3" r="4" fill="#d1495b"/>
+<circle cx="735.0" cy="72.4" r="4" fill="#d1495b"/>
+<rect x="540" y="52" width="16" height="3" fill="#d1495b"/>
+<text x="562" y="57" font-family="Arial" font-size="12">monitor:code_main</text>
+<polyline points="80.0,366.4 189.2,258.9 371.1,149.1 735.0,86.9" fill="none" stroke="#2a9d8f" stroke-width="2.5"/>
+<circle cx="80.0" cy="366.4" r="4" fill="#2a9d8f"/>
+<circle cx="189.2" cy="258.9" r="4" fill="#2a9d8f"/>
+<circle cx="371.1" cy="149.1" r="4" fill="#2a9d8f"/>
+<circle cx="735.0" cy="86.9" r="4" fill="#2a9d8f"/>
+<rect x="540" y="74" width="16" height="3" fill="#2a9d8f"/>
+<text x="562" y="79" font-family="Arial" font-size="12">monitor:code_main_side</text>
+<polyline points="80.0,355.8 189.2,258.1 371.1,152.3 735.0,93.6" fill="none" stroke="#7b2cbf" stroke-width="2.5"/>
+<circle cx="80.0" cy="355.8" r="4" fill="#7b2cbf"/>
+<circle cx="189.2" cy="258.1" r="4" fill="#7b2cbf"/>
+<circle cx="371.1" cy="152.3" r="4" fill="#7b2cbf"/>
+<circle cx="735.0" cy="93.6" r="4" fill="#7b2cbf"/>
+<rect x="540" y="96" width="16" height="3" fill="#7b2cbf"/>
+<text x="562" y="101" font-family="Arial" font-size="12">monitor:code_only</text>
+<polyline points="80.0,362.5 189.2,251.8 371.1,130.7 735.0,59.8" fill="none" stroke="#1769aa" stroke-width="2.5"/>
+<circle cx="80.0" cy="362.5" r="4" fill="#1769aa"/>
+<circle cx="189.2" cy="251.8" r="4" fill="#1769aa"/>
+<circle cx="371.1" cy="130.7" r="4" fill="#1769aa"/>
+<circle cx="735.0" cy="59.8" r="4" fill="#1769aa"/>
+<rect x="540" y="118" width="16" height="3" fill="#1769aa"/>
+<text x="562" y="123" font-family="Arial" font-size="12">oracle_q_rt</text>
+<polyline points="80.0,364.0 189.2,251.7 371.1,137.8 735.0,76.5" fill="none" stroke="#d1495b" stroke-width="2.5"/>
+<circle cx="80.0" cy="364.0" r="4" fill="#d1495b"/>
+<circle cx="189.2" cy="251.7" r="4" fill="#d1495b"/>
+<circle cx="371.1" cy="137.8" r="4" fill="#d1495b"/>
+<circle cx="735.0" cy="76.5" r="4" fill="#d1495b"/>
+<rect x="540" y="140" width="16" height="3" fill="#d1495b"/>
+<text x="562" y="145" font-family="Arial" font-size="12">random</text>
+<line x1="80" y1="395" x2="735" y2="395" stroke="#333"/>
+<line x1="80" y1="35" x2="80" y2="395" stroke="#333"/>
+<text x="407.5" y="440" text-anchor="middle" font-family="Arial" font-size="14">Audit budget (%)</text>
+<text x="20" y="230.0" transform="rotate(-90 20 230.0)" text-anchor="middle" font-family="Arial" font-size="14">Deployment-game safety</text>
+</svg>

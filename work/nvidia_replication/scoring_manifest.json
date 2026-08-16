@@ -1,0 +1,22 @@
+{
+  "backend": "nvidia",
+  "command": "C:\\Users\\Orange\\Documents\\Codex\\2026-08-09\\i-wa\\src\\oracle_gap\\cli.py score --input work\\paper_full\\records.jsonl --output work\\nvidia_replication\\scores.jsonl --backend nvidia --model nvidia/nemotron-3-nano-30b-a3b --confirm-paid-run",
+  "conditions": {
+    "code_main": 1042,
+    "code_main_side": 1042,
+    "code_only": 1042
+  },
+  "generated_at": "2026-08-15T16:42:47.504280+00:00",
+  "input_tokens": 2079176,
+  "models": {
+    "nvidia/nemotron-3-nano-30b-a3b": 3126
+  },
+  "output_tokens": 183659,
+  "retry_counts": {
+    "0": 3025,
+    "1": 94,
+    "2": 7
+  },
+  "rows": 3126,
+  "unique_cache_keys": 3126
+}

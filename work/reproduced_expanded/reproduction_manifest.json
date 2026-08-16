@@ -1,0 +1,148 @@
+{
+  "bootstraps": 1000,
+  "cluster_unit": "unique candidate attack",
+  "code_and_specification": {
+    "pyproject.toml": {
+      "bytes": 882,
+      "sha256": "7059819be46c325c4151f054974e757d2e60694f2cb7609259b1b811a3af627a"
+    },
+    "requirements-paper.lock": {
+      "bytes": 455,
+      "sha256": "8f032b54726d0095ae2d25d879ee0d68662b939304f9ff52b0c1c8d4d6254a90"
+    },
+    "research/experiment_spec.json": {
+      "bytes": 1188,
+      "sha256": "680957a509941a367a0627e58a9e0acb5873571325381005ede407a3efb30e5f"
+    },
+    "scripts/reproduce_expanded.ps1": {
+      "bytes": 1222,
+      "sha256": "ae6532781411a321d03c80f1ceceb0b4d1d171d403d0ce94374cd27ff54f241a"
+    },
+    "src/oracle_gap/__init__.py": {
+      "bytes": 61,
+      "sha256": "1d83b2b34a6d93c4238dfbd7e7bed473cc297d057f8e7ac355583c646cc9606f"
+    },
+    "src/oracle_gap/cli.py": {
+      "bytes": 9888,
+      "sha256": "763db05928b710101f751dc2073426753becc8b93ac020d3198183036ff44407"
+    },
+    "src/oracle_gap/config.py": {
+      "bytes": 803,
+      "sha256": "47009c511e895ada78cc6849da90942e123160c0e56cb8f28094d86dc2b58154"
+    },
+    "src/oracle_gap/evaluation.py": {
+      "bytes": 6380,
+      "sha256": "60ff674080e9e9bdf1c9e5e4914f64598b3f9547f36da794a6a46090836f16a7"
+    },
+    "src/oracle_gap/io.py": {
+      "bytes": 2676,
+      "sha256": "fdd756471c807c70127f562ae45601bbf210a451c7f03f64a228c82810669c3d"
+    },
+    "src/oracle_gap/paper.py": {
+      "bytes": 17398,
+      "sha256": "ea24f04f42bc9ced1644b6b162bd9abb568160062c7b472e17ffd930a73924a2"
+    },
+    "src/oracle_gap/prompts.py": {
+      "bytes": 1508,
+      "sha256": "7db92ed35e4d899db998494d86f56691f9f4cfe1bc8bbe058d089f49cef0de53"
+    },
+    "src/oracle_gap/reporting.py": {
+      "bytes": 12187,
+      "sha256": "34189c7e03fba686844864aad50146505d2330aa9ee28f3a1284d009b9b96743"
+    },
+    "src/oracle_gap/reproducibility.py": {
+      "bytes": 8220,
+      "sha256": "2f87df6b60b92d3e3bd054b127d8f7c0ca1aaf58e3537a71bd512c0e88c6f052"
+    },
+    "src/oracle_gap/schema.py": {
+      "bytes": 3782,
+      "sha256": "e209322e0671d44413e0097f9f7e68a918d29f336ec375cb1e9a5c8e350d75d2"
+    },
+    "src/oracle_gap/scoring.py": {
+      "bytes": 10311,
+      "sha256": "1cb4f70d928273523b0e33dd2ab82b299f85f17e4943f6f0ac24a71ab21c2733"
+    },
+    "src/oracle_gap/synthetic.py": {
+      "bytes": 1245,
+      "sha256": "2a4e754fa5f685ea0fad86d4b6d3c0f4cef79256553abf8327d7176c5796f0b6"
+    },
+    "src/oracle_gap/validation.py": {
+      "bytes": 1434,
+      "sha256": "97eb937af60a2cc499c79e57d90e363fe6b046781353f8885edb950ac13e9011"
+    }
+  },
+  "expected_model": "nvidia/nemotron-3-nano-30b-a3b",
+  "game_attack_ids": 398,
+  "game_folds": 50,
+  "generated_at": "2026-08-15T17:13:46.246911+00:00",
+  "inputs": {
+    "games": {
+      "bytes": 612915,
+      "path": "C:\\Users\\Orange\\Documents\\Codex\\2026-08-09\\i-wa\\work\\paper_full\\games.json",
+      "sha256": "9059cf506070533a2c101ca8d28eae2c5378b0aaede46bcce88b53b69e1bdd51"
+    },
+    "records": {
+      "bytes": 2909874,
+      "path": "C:\\Users\\Orange\\Documents\\Codex\\2026-08-09\\i-wa\\work\\paper_full\\records.jsonl",
+      "sha256": "db788cb8fe0cca8eac2772c377d23ddeb65ea84fe4174c9b247b45c86bf7bbec"
+    },
+    "scores": {
+      "bytes": 10949633,
+      "path": "C:\\Users\\Orange\\Documents\\Codex\\2026-08-09\\i-wa\\work\\nvidia_replication\\scores.jsonl",
+      "sha256": "5f69dd3fa9bee12c9a69ada000bf8ff773e4c75af58f329c02d565338d544405"
+    }
+  },
+  "outputs": {
+    "metrics_csv": {
+      "bytes": 5021,
+      "path": "C:\\Users\\Orange\\Documents\\Codex\\2026-08-09\\i-wa\\work\\reproduced_expanded\\ranking_gate_metrics.csv",
+      "sha256": "44d3f078924f0df6e8d5e5d750d66db249335f323411c6a85a4316f3408c157d"
+    },
+    "oracle_gap_plot": {
+      "bytes": 1972,
+      "path": "C:\\Users\\Orange\\Documents\\Codex\\2026-08-09\\i-wa\\work\\reproduced_expanded\\ranking_gate_oracle_gap.svg",
+      "sha256": "d5d9a39e05621320ea67aee6698661964b29ea5fe8e774ac0cc8389c547ed9ee"
+    },
+    "ranking_json": {
+      "bytes": 19086,
+      "path": "C:\\Users\\Orange\\Documents\\Codex\\2026-08-09\\i-wa\\work\\reproduced_expanded\\ranking_gate.json",
+      "sha256": "14b652d6f550b9bb6cbafc50cc79dee21c3ada9fb1d5b865428802bc016c529f"
+    },
+    "safety_plot": {
+      "bytes": 4245,
+      "path": "C:\\Users\\Orange\\Documents\\Codex\\2026-08-09\\i-wa\\work\\reproduced_expanded\\ranking_gate_safety.svg",
+      "sha256": "a73fb09e7f1a39f7048516e4865d07a6796d6afbc2b0469e5ad560432f3db36b"
+    },
+    "summary": {
+      "bytes": 1047,
+      "path": "C:\\Users\\Orange\\Documents\\Codex\\2026-08-09\\i-wa\\work\\reproduced_expanded\\ranking_gate.md",
+      "sha256": "6f2f39168516e95bd057e6adb32df7dd3f69d78c75a3acc9580ccc04f4aed75a"
+    }
+  },
+  "platform": "Windows-11-10.0.22621-SP0",
+  "python": "3.12.13 (main, Aug  7 2026, 02:26:41) [MSC v.1944 64 bit (AMD64)]",
+  "schema_version": 1,
+  "seed": 20260809,
+  "verification": {
+    "conditions": {
+      "code_main": 1042,
+      "code_main_side": 1042,
+      "code_only": 1042
+    },
+    "models": {
+      "nvidia/nemotron-3-nano-30b-a3b": 3126
+    },
+    "records": 1042,
+    "retry_counts": {
+      "0": 3025,
+      "1": 94,
+      "2": 7
+    },
+    "score_rows": 3126,
+    "successful_correct_attacks": 284,
+    "task_cluster_equals_attack_cluster": true,
+    "unique_attacks": 1042,
+    "unique_tasks": 1042,
+    "verified": true
+  }
+}

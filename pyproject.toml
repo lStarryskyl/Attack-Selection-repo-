@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "oracle-gap"
+version = "0.1.0"
+description = "Reproducible oracle-gap experiments for trusted monitoring under attack selection"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+api = ["openai>=1.68,<3"]
+data = ["pandas>=2.2,<3", "pyarrow>=18,<22"]
+plots = ["matplotlib>=3.9,<4"]
+paper = ["numpy>=2,<3", "pandas>=2.2,<3", "scipy>=1.14,<2", "scikit-learn>=1.5,<2", "matplotlib>=3.9,<4", "plotly>=5.24,<7"]
+dev = ["pytest>=8.3,<9"]
+all = [
+  "openai>=1.68,<3",
+  "pandas>=2.2,<3",
+  "pyarrow>=18,<22",
+  "matplotlib>=3.9,<4",
+  "pytest>=8.3,<9",
+]
+
+[project.scripts]
+oracle-gap = "oracle_gap.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/oracle_gap"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
