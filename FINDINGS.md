@@ -32,7 +32,9 @@ The results are complementary rather than contradictory. The earlier result conc
 
 ## What can and cannot be claimed
 
-Supported claim: **For Nemotron under this fixed prompt and the expanded selective-audit games (398 unique submitted attacks, including 94 successful-and-correct attacks), revealing the exact side task does not improve safety over providing the main task.**
+Supported claim: **For Nemotron under this fixed prompt and quantized top-k ranking procedure (398 unique submitted attacks, including 94 successful-and-correct attacks), revealing the exact side task does not improve mean game safety over providing the main task at the original monitor's fixed audit count.**
+
+This is narrower than a calibrated monitor comparison. Nemotron was scored only on attack candidates, so its honest false-positive rate is unknown and no Nemotron condition was independently calibrated. Adding the side task raised attack suspicion by 9.58 points on average, but produced only five distinct score values; many audit decisions therefore depend on deterministic tie-breaking. The result does not establish that side-task access has no value at a common held-out FPR.
 
 Supported interpretation: **The earlier ranking advantage is unlikely to be explained solely by an information boundary consisting of the missing written side-task description.**
 

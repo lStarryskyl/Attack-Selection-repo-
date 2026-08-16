@@ -6,7 +6,7 @@ This package measures how trusted-monitor safety changes across three fixed info
 2. candidate code plus the main task;
 3. candidate code plus the main task and exact side task.
 
-It validates team artifacts, caches every score, calibrates on attack-group-disjoint training data, evaluates fixed audit budgets, bootstraps by unique attack and task, and produces machine-readable and human-readable reports.
+It validates team artifacts, caches every score, evaluates fixed audit budgets, bootstraps by unique attack and task, and produces machine-readable and human-readable reports. The generic evaluator supports independent calibration when honest examples are supplied; the released paper-aligned ranking run instead preserves the original monitor's realized audit count.
 
 ## Quick start
 
@@ -71,7 +71,7 @@ Public BigCodeBench does not provide the team’s generated attacks, fold assign
 - Full OpenAI scoring requires `--confirm-paid-run`; smoke runs do not.
 - Secrets are read from environment variables and never written to manifests.
 
-All reported safety estimates are empirical detection rates among successful, correct attacks in the test split. They are benchmark estimates, not deployment guarantees.
+The generic evaluator reports empirical detection rates. The paper-aligned ranking run uses `k / (k + V - C)`, where `k` is the audit count, `V` is the number of successful-and-correct submitted attacks, and `C` is the number caught. These benchmark estimates are not deployment guarantees.
 
 For the completed expanded Nemotron experiment, see `REPRODUCIBILITY.md` for the one-command cached reproduction, `research/experiment_spec.json` for the frozen design, and `FINDINGS.md` for the research interpretation and comparison with the prior ranking analysis.
 
@@ -85,3 +85,5 @@ oracle-gap ranking-gate --games artifacts/paper_games.json --output artifacts/ra
 ```
 
 `paper-import` runs the repository's original 50-fold estimator once, reproduces the 0.5872 baseline, and exports the submitted games. `ranking-gate` preserves each fold's realized audit capacity `k`, compares Flat (`s_M`), Oracle-C (`q_RT`), and exact hypergeometric Random, and resamples unique candidate attacks as clusters. Passing `--scores` adds the three oracle-gap monitor conditions to the same games.
+
+The cached Nemotron run contains attack candidates only, so it does not support Nemotron false-positive rates or condition-specific threshold calibration. See `METHODOLOGY.md` and run `oracle-gap diagnose-ranking --help` for the verified split-level diagnostics.

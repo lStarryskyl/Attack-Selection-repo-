@@ -17,6 +17,7 @@ from .synthetic import make_synthetic
 from .validation import validate_file
 from .paper import evaluate_ranking_games, import_attackselection_repo
 from .reproducibility import reproduce_ranking_run, verify_cached_scores
+from .diagnostics import diagnose_ranking_games
 
 
 def configure_logging() -> None:
@@ -79,6 +80,12 @@ def parser() -> argparse.ArgumentParser:
     reproduce.add_argument("--expected-model")
     reproduce.add_argument("--bootstraps", type=int)
     reproduce.add_argument("--seed", type=int)
+    diagnose = sub.add_parser("diagnose-ranking")
+    diagnose.add_argument("--games", required=True)
+    diagnose.add_argument("--scores", required=True)
+    diagnose.add_argument("--honest-scores", required=True)
+    diagnose.add_argument("--splits", required=True)
+    diagnose.add_argument("--output-dir", required=True)
     return root
 
 
@@ -197,6 +204,14 @@ def main(argv: list[str] | None = None) -> int:
             "score_rows": manifest["verification"]["score_rows"],
             "folds": manifest["game_folds"],
             "manifest": str(Path(args.output_dir).resolve() / "reproduction_manifest.json"),
+        }, indent=2))
+        return 0
+    if args.command == "diagnose-ranking":
+        result = diagnose_ranking_games(args.games, args.scores, args.honest_scores, args.splits, args.output_dir)
+        print(json.dumps({
+            "folds": result["split_diagnostics"]["folds"],
+            "budgets": len(result["aggregate_by_budget"]),
+            "report": str(Path(args.output_dir).resolve() / "methodology_audit.md"),
         }, indent=2))
         return 0
     return 2

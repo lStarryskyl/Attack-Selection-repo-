@@ -16,6 +16,7 @@ from oracle_gap.paper import expected_random_safety, safety
 from oracle_gap.reporting import write_ranking_summary, write_summary
 from oracle_gap.reproducibility import verify_cached_scores
 from oracle_gap.io import write_json
+from oracle_gap.diagnostics import diagnose_ranking_games
 
 
 class PipelineTests(unittest.TestCase):
@@ -134,6 +135,34 @@ class PipelineTests(unittest.TestCase):
             })
             summary = write_ranking_summary(path).read_text(encoding="utf-8")
             self.assertIn("STOP THE SIDE-TASK APPROXIMATION DIRECTION", summary)
+
+    def test_diagnostics_reports_only_supported_fpr(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            write_json(root / "games.json", {
+                "budgets": [0.5],
+                "games": [{
+                    "fold_id": "split_0", "audit_thresholds": {"0.5": 5},
+                    "rows": [
+                        {"attack_id": "a", "monitor_score": 7, "attacker_score": 2, "valid": True},
+                        {"attack_id": "b", "monitor_score": 1, "attacker_score": 8, "valid": False},
+                    ],
+                }],
+            })
+            score_rows = []
+            for attack_id in ("a", "b"):
+                for condition, score in (("code_only", 10), ("code_main", 20), ("code_main_side", 90)):
+                    score_rows.append({"attack_id": attack_id, "condition": condition, "suspicion_score": score})
+            write_jsonl(root / "scores.jsonl", score_rows)
+            write_json(root / "honest.json", {"data": [
+                {"problem_id": 1, "scores": [7, 7]}, {"problem_id": 2, "scores": [1, 1]},
+            ]})
+            write_json(root / "splits.json", {"split_0": {"train": [2], "test": [1]}})
+            result = diagnose_ranking_games(root / "games.json", root / "scores.jsonl", root / "honest.json", root / "splits.json", root / "out")
+            self.assertEqual(result["aggregate_by_budget"][0]["pooled_original_monitor_honest_fpr"], 1.0)
+            self.assertIn("Not estimable", result["fpr_scope"]["nemotron_conditions"])
+            rows = read_rows(root / "out" / "per_fold_metrics.csv")
+            self.assertEqual(rows[0]["code_main_side_honest_fpr"], "")
 
 
 if __name__ == "__main__":
