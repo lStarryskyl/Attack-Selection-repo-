@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.env
+*.log
+
+# Local downloads, dependency caches, and intermediate experiments.
+work/public/
+work/attackselection-deps/
+work/apor_render/
+work/nvidia_smoke/
+work/nvidia_full/
+work/paper/
+work/smoke/
+
+# Keep the released expanded records, scores, and reproduced artifacts tracked.
