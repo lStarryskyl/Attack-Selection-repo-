@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="460" viewBox="0 0 760 460">
+<rect width="100%" height="100%" fill="white"/>
+<line x1="80" y1="395.0" x2="735" y2="395.0" stroke="#dddddd"/>
+<text x="70" y="399.0" text-anchor="end" font-family="Arial" font-size="12">-0.01</text>
+<line x1="80" y1="323.0" x2="735" y2="323.0" stroke="#dddddd"/>
+<text x="70" y="327.0" text-anchor="end" font-family="Arial" font-size="12">0.02</text>
+<line x1="80" y1="251.0" x2="735" y2="251.0" stroke="#dddddd"/>
+<text x="70" y="255.0" text-anchor="end" font-family="Arial" font-size="12">0.04</text>
+<line x1="80" y1="179.0" x2="735" y2="179.0" stroke="#dddddd"/>
+<text x="70" y="183.0" text-anchor="end" font-family="Arial" font-size="12">0.07</text>
+<line x1="80" y1="107.0" x2="735" y2="107.0" stroke="#dddddd"/>
+<text x="70" y="111.0" text-anchor="end" font-family="Arial" font-size="12">0.09</text>
+<line x1="80" y1="35.0" x2="735" y2="35.0" stroke="#dddddd"/>
+<text x="70" y="39.0" text-anchor="end" font-family="Arial" font-size="12">0.12</text>
+<line x1="80" y1="370.2" x2="735" y2="370.2" stroke="#333"/>
+<polyline points="80.0,161.1 189.2,68.3 371.1,59.8 735.0,164.0" fill="none" stroke="#1769aa" stroke-width="2.5"/>
+<circle cx="80.0" cy="161.1" r="4" fill="#1769aa"/>
+<circle cx="189.2" cy="68.3" r="4" fill="#1769aa"/>
+<circle cx="371.1" cy="59.8" r="4" fill="#1769aa"/>
+<circle cx="735.0" cy="164.0" r="4" fill="#1769aa"/>
+<rect x="540" y="30" width="16" height="3" fill="#1769aa"/>
+<text x="562" y="35" font-family="Arial" font-size="12">exact side task - main task</text>
+<line x1="80" y1="395" x2="735" y2="395" stroke="#333"/>
+<line x1="80" y1="35" x2="80" y2="395" stroke="#333"/>
+<text x="407.5" y="440" text-anchor="middle" font-family="Arial" font-size="14">Audit budget (%)</text>
+<text x="20" y="230.0" transform="rotate(-90 20 230.0)" text-anchor="middle" font-family="Arial" font-size="14">Paired safety gap</text>
+</svg>

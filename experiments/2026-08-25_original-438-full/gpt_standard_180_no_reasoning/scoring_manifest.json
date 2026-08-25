@@ -1,0 +1,35 @@
+{
+  "backend": "azure_openai",
+  "command": "C:\\Users\\Orange\\Documents\\Codex\\2026-08-09\\i-wa\\outputs\\Attack-Selection-repo-\\.venv\\Scripts\\oracle-gap score --input experiments\\2026-08-25_original-438-smoke\\data\\matched_original_438.jsonl --output experiments\\2026-08-25_original-438-full\\gpt_standard_180_no_reasoning\\scores.jsonl --backend azure --max-output-tokens 180 --reasoning-effort none --confirm-paid-run --workers 4",
+  "conditions": {
+    "code_main": 876,
+    "code_main_side": 876,
+    "code_only": 876
+  },
+  "generated_at": "2026-08-25T18:12:57.872447+00:00",
+  "generation_config": {
+    "max_output_tokens": 180,
+    "reasoning": false,
+    "reasoning_effort": "none",
+    "temperature": null,
+    "top_p": null
+  },
+  "input_tokens": 1556068,
+  "models": {
+    "gpt-5.4-mini": 2628
+  },
+  "output_tokens": 174234,
+  "prompt_variant": "standard",
+  "retry_counts": {
+    "0": 2075,
+    "1": 351,
+    "2": 128,
+    "3": 51,
+    "4": 15,
+    "5": 5,
+    "6": 3
+  },
+  "rows": 2628,
+  "unique_cache_keys": 2628,
+  "workers": 4
+}
