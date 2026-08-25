@@ -1,0 +1,13 @@
+{
+  "attack_records": 30,
+  "attacks_sha256": "25f689156308b9b3cefb1dd743160b1af01d98c0da5c6842fcdf817d0455166f",
+  "attacks_source": "records.jsonl",
+  "honest_records": 30,
+  "honest_sha256": "bd3150c30e56a66353c2b474a962f0c29b65eebb0d6742c756a13f0eae14121f",
+  "honest_source": "honest_BCBSet.json",
+  "label_matching": "Each attack and honest candidate share task, main-task text, and side-task text.",
+  "missing_honest_tasks": [],
+  "seed": 20260809,
+  "subset_tasks": 30,
+  "total_records": 60
+}

@@ -11,7 +11,7 @@ from typing import Any
 
 from .io import load_records, read_rows, write_json
 from .paper import evaluate_ranking_games
-from .prompts import Condition, build_prompt
+from .prompts import Condition, PromptVariant, build_prompt
 from .reporting import write_ranking_summary
 from .scoring import cache_key, parse_result
 
@@ -57,10 +57,15 @@ def verify_cached_scores(
         if condition_name in observed[record_id]:
             errors.append(f"score row {index}: duplicate condition {condition_name!r} for {record_id}")
         observed[record_id].add(condition_name)
-        prompt = build_prompt(by_record[record_id], condition)
+        try:
+            prompt_variant = PromptVariant(str(row.get("prompt_variant", PromptVariant.STANDARD.value)))
+        except ValueError:
+            errors.append(f"score row {index}: unknown prompt variant {row.get('prompt_variant')!r}")
+            continue
+        prompt = build_prompt(by_record[record_id], condition, prompt_variant)
         if row.get("prompt") != prompt:
             errors.append(f"score row {index}: stored prompt does not match prompt builder")
-        expected_key = cache_key(by_record[record_id], condition, model, prompt)
+        expected_key = cache_key(by_record[record_id], condition, model, prompt, row.get("generation_config"))
         if row.get("cache_key") != expected_key:
             errors.append(f"score row {index}: cache key mismatch")
         if expected_key in cache_keys:

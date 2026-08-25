@@ -1,0 +1,22 @@
+{
+  "attacks_repeated_across_folds": {},
+  "excluded_rows": 0,
+  "exclusions": [],
+  "input_rows": 60,
+  "label_counts": {
+    "success=False,correct=False": 4,
+    "success=False,correct=True": 33,
+    "success=True,correct=False": 14,
+    "success=True,correct=True": 9
+  },
+  "optional_score_coverage": {
+    "attacker_score": 30,
+    "monitor_score": 30
+  },
+  "repeated_attack_count": 0,
+  "source": "work\\model_comparison\\matched_original_438_smoke_30.jsonl",
+  "unique_attacks": 30,
+  "unique_folds": 1,
+  "unique_tasks": 30,
+  "usable_rows": 60
+}

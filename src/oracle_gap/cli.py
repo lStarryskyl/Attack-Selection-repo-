@@ -12,12 +12,15 @@ from .config import Settings
 from .evaluation import evaluate
 from .io import load_records, read_rows, write_json, write_jsonl
 from .reporting import write_ranking_summary, write_results, write_score_deltas, write_summary
-from .scoring import DeterministicBackend, NvidiaBackend, OpenAIBackend, score_records
+from .scoring import AzureOpenAIBackend, DeterministicBackend, NvidiaBackend, OpenAIBackend, score_records
 from .synthetic import make_synthetic
 from .validation import validate_file
 from .paper import evaluate_ranking_games, import_attackselection_repo
 from .reproducibility import reproduce_ranking_run, verify_cached_scores
 from .diagnostics import diagnose_ranking_games
+from .matched import build_matched_records, evaluate_matched
+from .prompts import Condition, PromptVariant
+from .score_validation import validate_score_run
 
 
 def configure_logging() -> None:
@@ -41,10 +44,17 @@ def parser() -> argparse.ArgumentParser:
     score = sub.add_parser("score")
     score.add_argument("--input", required=True)
     score.add_argument("--output", required=True)
-    score.add_argument("--backend", choices=("deterministic", "openai", "nvidia"), default="deterministic")
+    score.add_argument("--backend", choices=("deterministic", "openai", "azure", "nvidia"), default="deterministic")
     score.add_argument("--model")
+    score.add_argument("--max-output-tokens", type=int)
+    score.add_argument("--reasoning", action="store_true")
+    score.add_argument("--reasoning-effort", choices=("none", "minimal", "low", "medium", "high", "xhigh"), default="medium")
+    score.add_argument("--max-thinking-tokens", type=int)
+    score.add_argument("--prompt-variant", choices=tuple(value.value for value in PromptVariant), default=PromptVariant.STANDARD.value)
+    score.add_argument("--conditions", default=",".join(value.value for value in Condition))
     score.add_argument("--smoke-limit", type=int)
     score.add_argument("--confirm-paid-run", action="store_true")
+    score.add_argument("--workers", type=int, default=1)
     evaluate_p = sub.add_parser("evaluate")
     evaluate_p.add_argument("--input", required=True)
     evaluate_p.add_argument("--scores", required=True)
@@ -72,6 +82,11 @@ def parser() -> argparse.ArgumentParser:
     verify.add_argument("--scores", required=True)
     verify.add_argument("--expected-model")
     verify.add_argument("--output", required=True)
+    validate_scores = sub.add_parser("validate-score-run")
+    validate_scores.add_argument("--records", required=True)
+    validate_scores.add_argument("--scores", required=True)
+    validate_scores.add_argument("--conditions", default=",".join(value.value for value in Condition))
+    validate_scores.add_argument("--output", required=True)
     reproduce = sub.add_parser("reproduce-ranking")
     reproduce.add_argument("--records", required=True)
     reproduce.add_argument("--games", required=True)
@@ -86,6 +101,21 @@ def parser() -> argparse.ArgumentParser:
     diagnose.add_argument("--honest-scores", required=True)
     diagnose.add_argument("--splits", required=True)
     diagnose.add_argument("--output-dir", required=True)
+    matched_build = sub.add_parser("matched-build")
+    matched_build.add_argument("--attacks", required=True)
+    matched_build.add_argument("--honest-samples", required=True)
+    matched_build.add_argument("--output", required=True)
+    matched_build.add_argument("--subset-tasks", type=int)
+    matched_build.add_argument("--seed", type=int)
+    matched_evaluate = sub.add_parser("matched-evaluate")
+    matched_evaluate.add_argument("--records", required=True)
+    matched_evaluate.add_argument("--scores", required=True, nargs="+")
+    matched_evaluate.add_argument("--games", required=True)
+    matched_evaluate.add_argument("--splits", required=True)
+    matched_evaluate.add_argument("--output-dir", required=True)
+    matched_evaluate.add_argument("--budgets", default="0.002,0.005,0.01,0.02")
+    matched_evaluate.add_argument("--bootstraps", type=int)
+    matched_evaluate.add_argument("--seed", type=int)
     return root
 
 
@@ -120,16 +150,34 @@ def main(argv: list[str] | None = None) -> int:
         records, excluded = load_records(args.input)
         if excluded:
             logging.warning("excluded %s invalid input rows", len(excluded))
-        if args.backend in {"openai", "nvidia"}:
+        max_output_tokens = args.max_output_tokens or settings.max_output_tokens
+        if args.backend in {"openai", "azure", "nvidia"}:
             if args.smoke_limit is None and not args.confirm_paid_run:
                 raise SystemExit("Refusing full paid run: pass --smoke-limit N or --confirm-paid-run")
             if args.backend == "openai":
-                backend = OpenAIBackend(args.model or settings.model, settings.max_output_tokens)
+                selected_model = args.model or settings.model
+                if args.reasoning and selected_model.startswith(("gpt-4.1", "gpt-4o", "gpt-4-")):
+                    raise SystemExit(f"{selected_model} is a non-reasoning GPT model; choose a reasoning-capable model or omit --reasoning")
+                backend = OpenAIBackend(selected_model, max_output_tokens, args.reasoning_effort if args.reasoning else None)
+            elif args.backend == "azure":
+                if args.model:
+                    raise SystemExit("Azure uses AZURE_OPENAI_DEPLOYMENT; omit --model")
+                backend = AzureOpenAIBackend(max_output_tokens, args.reasoning_effort if args.reasoning else "none")
             else:
-                backend = NvidiaBackend(args.model or "nvidia/nemotron-3-nano-30b-a3b", settings.max_output_tokens)
+                backend = NvidiaBackend(
+                    args.model or "nvidia/nemotron-3-nano-30b-a3b",
+                    max_output_tokens,
+                    args.reasoning,
+                    args.max_thinking_tokens,
+                )
         else:
             backend = DeterministicBackend()
-        summary = score_records(records, backend, args.output, args.smoke_limit)
+        try:
+            conditions = tuple(Condition(value.strip()) for value in args.conditions.split(",") if value.strip())
+        except ValueError as exc:
+            raise SystemExit(f"invalid condition: {exc}") from exc
+        prompt_variant = PromptVariant(args.prompt_variant)
+        summary = score_records(records, backend, args.output, args.smoke_limit, prompt_variant, conditions, args.workers)
         score_rows = read_rows(args.output)
         write_json(Path(args.output).with_name("scoring_manifest.json"), {
             "backend": backend.name,
@@ -140,10 +188,32 @@ def main(argv: list[str] | None = None) -> int:
             "input_tokens": sum(int(row.get("input_tokens") or 0) for row in score_rows),
             "output_tokens": sum(int(row.get("output_tokens") or 0) for row in score_rows),
             "retry_counts": dict(Counter(str(row.get("retries", 0)) for row in score_rows)),
+            "generation_config": getattr(backend, "generation_config", {}),
+            "prompt_variant": prompt_variant.value,
+            "workers": args.workers,
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "command": " ".join(sys.argv),
         })
         print(json.dumps(summary, indent=2))
+        return 0
+    if args.command == "matched-build":
+        result = build_matched_records(
+            args.attacks, args.honest_samples, args.output,
+            args.subset_tasks, args.seed or settings.seed,
+        )
+        print(json.dumps(result, indent=2))
+        return 0
+    if args.command == "matched-evaluate":
+        result = evaluate_matched(
+            args.records, args.scores, args.games, args.splits, args.output_dir,
+            [float(value) for value in args.budgets.split(",")],
+            args.bootstraps or settings.bootstraps,
+            args.seed or settings.seed,
+        )
+        print(json.dumps({
+            "records": result["records"], "score_rows": result["score_rows"],
+            "conditions": result["conditions"], "metrics": len(result["aggregate"]),
+        }, indent=2))
         return 0
     if args.command == "evaluate":
         records, excluded = load_records(args.input)
@@ -188,6 +258,20 @@ def main(argv: list[str] | None = None) -> int:
         write_json(args.output, result)
         print(json.dumps(result, indent=2))
         return 0
+    if args.command == "validate-score-run":
+        result = validate_score_run(
+            args.records,
+            args.scores,
+            args.output,
+            [value.strip() for value in args.conditions.split(",") if value.strip()],
+        )
+        print(json.dumps({
+            "valid": result["valid"],
+            "records": result["records"],
+            "score_rows": result["observed_score_rows"],
+            "parse_failures": len(result["parse_failures"]),
+        }, indent=2))
+        return 0 if result["valid"] else 2
     if args.command == "reproduce-ranking":
         manifest = reproduce_ranking_run(
             args.records,

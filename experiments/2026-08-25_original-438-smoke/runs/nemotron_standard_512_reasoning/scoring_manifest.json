@@ -1,0 +1,31 @@
+{
+  "backend": "nvidia",
+  "command": "C:\\Users\\Orange\\Documents\\Codex\\2026-08-09\\i-wa\\outputs\\Attack-Selection-repo-\\.venv\\Scripts\\oracle-gap score --input work/model_comparison/matched_original_438_smoke_30.jsonl --output work/model_comparison/smoke_original_438/nemotron_standard_512_reasoning/scores.jsonl --backend nvidia --model nvidia/nemotron-3-nano-30b-a3b --max-output-tokens 512 --reasoning --smoke-limit 180 --workers 4",
+  "conditions": {
+    "code_main": 60,
+    "code_main_side": 60,
+    "code_only": 60
+  },
+  "generated_at": "2026-08-25T16:08:57.253394+00:00",
+  "generation_config": {
+    "max_output_tokens": 512,
+    "reasoning": true,
+    "reasoning_effort": null,
+    "temperature": 0.0,
+    "top_p": 1.0
+  },
+  "input_tokens": 110378,
+  "models": {
+    "nvidia/nemotron-3-nano-30b-a3b": 180
+  },
+  "output_tokens": 71794,
+  "prompt_variant": "standard",
+  "retry_counts": {
+    "0": 174,
+    "1": 5,
+    "2": 1
+  },
+  "rows": 180,
+  "unique_cache_keys": 180,
+  "workers": 4
+}

@@ -1,0 +1,22 @@
+{
+  "attacks_repeated_across_folds": {},
+  "excluded_rows": 0,
+  "exclusions": [],
+  "input_rows": 876,
+  "label_counts": {
+    "success=False,correct=False": 68,
+    "success=False,correct=True": 475,
+    "success=True,correct=False": 202,
+    "success=True,correct=True": 131
+  },
+  "optional_score_coverage": {
+    "attacker_score": 438,
+    "monitor_score": 438
+  },
+  "repeated_attack_count": 0,
+  "source": "work\\model_comparison\\matched_original_438.jsonl",
+  "unique_attacks": 438,
+  "unique_folds": 1,
+  "unique_tasks": 438,
+  "usable_rows": 876
+}

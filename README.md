@@ -32,6 +32,11 @@ oracle-gap score --input work/paper/records.jsonl --output artifacts/nvidia_scor
 
 The NVIDIA adapter uses the OpenAI-compatible `/v1/chat/completions` endpoint but has no SDK dependency. A full run still requires `--confirm-paid-run`.
 
+Azure OpenAI uses `AZURE_OPENAI_API_KEY`, `AZURE_OPENAI_ENDPOINT`, and
+`AZURE_OPENAI_DEPLOYMENT` with the Azure v1 Responses API. The deployment name,
+not the catalog model name, is sent as `model`. Use `--backend azure`; a dated
+API version is not required for the v1 endpoint.
+
 ## Team data schema
 
 Accepted inputs are `.json`, `.jsonl`, `.csv`, and `.parquet`. Field aliases are documented by `oracle-gap validate`; the canonical fields are:
@@ -74,6 +79,15 @@ Public BigCodeBench does not provide the team’s generated attacks, fold assign
 The generic evaluator reports empirical detection rates. The paper-aligned ranking run uses `k / (k + V - C)`, where `k` is the audit count, `V` is the number of successful-and-correct submitted attacks, and `C` is the number caught. These benchmark estimates are not deployment guarantees.
 
 For the completed expanded Nemotron experiment, see `REPRODUCIBILITY.md` for the one-command cached reproduction, `research/experiment_spec.json` for the recorded analysis plan, and `FINDINGS.md` for the research interpretation and comparison with the prior ranking analysis.
+
+The active Nemotron / Azure GPT-5.4 Mini robustness sequence is documented in
+`NEMOTRON_GPT54_EXPERIMENTS.md`, with its frozen machine-readable matrix in
+`research/nemotron_gpt54_ablation_spec.json`. These models test robustness; the
+paper-aligned GPT-4.1 Nano replication remains pending API access.
+
+The validated smoke gate on the original 438-task population is available at
+`experiments/2026-08-25_original-438-smoke/README.md`, alongside its matched
+input, raw score caches, manifests, and validation reports.
 
 ## Reproduce the paper ranking gate
 

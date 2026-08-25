@@ -14,5 +14,6 @@ work/nvidia_smoke/
 work/nvidia_full/
 work/paper/
 work/smoke/
+work/model_comparison/
 
 # Keep the released expanded records, scores, and reproduced artifacts tracked.

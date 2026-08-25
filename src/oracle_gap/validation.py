@@ -16,7 +16,7 @@ def validate_file(path: str | Path) -> tuple[list, dict[str, Any]]:
         task_folds[record.task_id].add(record.fold_id)
     repeated = {key: sorted(value) for key, value in attack_folds.items() if len(value) > 1}
     report = {
-        "source": str(Path(path).resolve()),
+        "source": str(Path(path)),
         "input_rows": len(records) + len(excluded),
         "usable_rows": len(records),
         "excluded_rows": len(excluded),
@@ -33,4 +33,3 @@ def validate_file(path: str | Path) -> tuple[list, dict[str, Any]]:
         },
     }
     return records, report
-
