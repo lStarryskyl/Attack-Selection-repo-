@@ -1,6 +1,6 @@
 # Original-438 model-comparison smoke gate
 
-Status: **smoke complete; full 438-task paid run awaiting explicit confirmation**.
+Status: **smoke complete; full 438-task paid run explicitly confirmed and in progress**.
 
 This is an API, parsing, data, and cost validation run. It is not a safety result and does not estimate FPR, detection, or confidence intervals. Those require the complete original 438-task population and the original train/test splits.
 

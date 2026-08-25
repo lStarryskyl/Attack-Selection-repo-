@@ -1,0 +1,17 @@
+{
+  "source": "work/nvidia_replication/scores.jsonl",
+  "source_sha256": "5f69dd3fa9bee12c9a69ada000bf8ff773e4c75af58f329c02d565338d544405",
+  "filtered_output": "attack_scores_reused.jsonl",
+  "filtered_sha256": "61f546f49bc42f6952572102caffe2fa4731acd965023fd480afda95b6077e42",
+  "source_rows": 3126,
+  "selected_rows": 1314,
+  "selected_records": 438,
+  "conditions": ["code_only", "code_main", "code_main_side"],
+  "requested_model": "nvidia/nemotron-3-nano-30b-a3b",
+  "max_output_tokens": 180,
+  "reasoning": false,
+  "exact_current_prompt_matches": 1314,
+  "exact_current_prompt_expected": 1314,
+  "parse_failures": 0,
+  "note": "The legacy attack cache predates per-row generation_config and response_model fields. Model, generation settings, exact prompts, and raw responses are preserved by its original run manifest and were verified before reuse."
+}

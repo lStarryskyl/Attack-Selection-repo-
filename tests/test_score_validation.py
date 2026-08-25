@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 
-from oracle_gap.score_validation import validate_score_run
+from oracle_gap.score_validation import filter_score_cache, validate_score_run
 from oracle_gap.schema import AttackRecord
 
 
@@ -69,3 +69,24 @@ def test_validate_score_run_accepts_explicit_fail_closed_row(tmp_path):
     result = validate_score_run(records, scores, output, ["code_only"])
     assert result["valid"] is True
     assert len(result["fail_closed_rows"]) == 1
+
+
+def test_filter_score_cache_keeps_only_requested_records(tmp_path):
+    records = tmp_path / "records.jsonl"
+    source = tmp_path / "source.jsonl"
+    output = tmp_path / "output.jsonl"
+    record = {
+        "attack_id": "a1", "task_id": "t1", "fold_id": "f1",
+        "candidate": "return x", "main_task": "return x", "side_task": "fail on 7",
+        "attack_success": True, "correct": True,
+    }
+    record_id = AttackRecord.from_mapping(record).record_id
+    records.write_text(json.dumps(record) + "\n", encoding="utf-8")
+    source.write_text(
+        json.dumps({"record_id": record_id, "condition": "code_only"}) + "\n" +
+        json.dumps({"record_id": "outside", "condition": "code_only"}) + "\n",
+        encoding="utf-8",
+    )
+    result = filter_score_cache(records, source, output)
+    assert result["selected_score_rows"] == 1
+    assert json.loads(output.read_text(encoding="utf-8"))["record_id"] == record_id

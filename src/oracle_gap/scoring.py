@@ -314,6 +314,9 @@ class NvidiaBackend:
         self.max_attempts = int(os.getenv("NVIDIA_MAX_ATTEMPTS", "8"))
         if self.max_attempts < 1:
             raise ValueError("NVIDIA_MAX_ATTEMPTS must be at least 1")
+        self.timeout_seconds = float(os.getenv("NVIDIA_TIMEOUT_SECONDS", "120"))
+        if self.timeout_seconds <= 0:
+            raise ValueError("NVIDIA_TIMEOUT_SECONDS must be positive")
         self._last_request_started = 0.0
         self._throttle_lock = threading.Lock()
 
@@ -354,7 +357,7 @@ class NvidiaBackend:
                 method="POST",
             )
             try:
-                with urlopen(request, timeout=120) as response:
+                with urlopen(request, timeout=self.timeout_seconds) as response:
                     value = json.loads(response.read().decode("utf-8"))
                 raw = value["choices"][0]["message"]["content"]
                 usage = value.get("usage", {})

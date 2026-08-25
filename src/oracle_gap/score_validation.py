@@ -5,7 +5,7 @@ from pathlib import Path
 from statistics import mean
 from typing import Any
 
-from .io import load_records, read_rows, write_json
+from .io import load_records, read_rows, write_json, write_jsonl
 from .scoring import parse_result
 
 
@@ -94,3 +94,23 @@ def validate_score_run(
     }
     write_json(output_path, result)
     return result
+
+
+def filter_score_cache(
+    records_path: str | Path,
+    source_scores_path: str | Path,
+    output_scores_path: str | Path,
+) -> dict[str, Any]:
+    records, excluded = load_records(records_path)
+    if excluded:
+        raise ValueError(f"records input contains {len(excluded)} excluded rows")
+    record_ids = {record.record_id for record in records}
+    source_rows = read_rows(source_scores_path)
+    selected = [row for row in source_rows if str(row.get("record_id")) in record_ids]
+    write_jsonl(output_scores_path, selected)
+    return {
+        "records": len(records),
+        "source_score_rows": len(source_rows),
+        "selected_score_rows": len(selected),
+        "selected_record_ids": len({str(row.get("record_id")) for row in selected}),
+    }

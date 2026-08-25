@@ -20,7 +20,7 @@ from .reproducibility import reproduce_ranking_run, verify_cached_scores
 from .diagnostics import diagnose_ranking_games
 from .matched import build_matched_records, evaluate_matched
 from .prompts import Condition, PromptVariant
-from .score_validation import validate_score_run
+from .score_validation import filter_score_cache, validate_score_run
 
 
 def configure_logging() -> None:
@@ -87,6 +87,10 @@ def parser() -> argparse.ArgumentParser:
     validate_scores.add_argument("--scores", required=True)
     validate_scores.add_argument("--conditions", default=",".join(value.value for value in Condition))
     validate_scores.add_argument("--output", required=True)
+    filter_scores = sub.add_parser("filter-score-cache")
+    filter_scores.add_argument("--records", required=True)
+    filter_scores.add_argument("--source-scores", required=True)
+    filter_scores.add_argument("--output", required=True)
     reproduce = sub.add_parser("reproduce-ranking")
     reproduce.add_argument("--records", required=True)
     reproduce.add_argument("--games", required=True)
@@ -272,6 +276,10 @@ def main(argv: list[str] | None = None) -> int:
             "parse_failures": len(result["parse_failures"]),
         }, indent=2))
         return 0 if result["valid"] else 2
+    if args.command == "filter-score-cache":
+        result = filter_score_cache(args.records, args.source_scores, args.output)
+        print(json.dumps(result, indent=2))
+        return 0
     if args.command == "reproduce-ranking":
         manifest = reproduce_ranking_run(
             args.records,
