@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "registered_at": "2026-08-25",
-  "status": "full primary matrix explicitly confirmed; both 180-token non-reasoning configurations complete and validated",
+  "status": "full primary matrix explicitly confirmed; both 180-token runs and the Nemotron 512-token reasoning run are complete and validated",
   "seed": 20260809,
   "research_question": "Does main-task or exact-side-task context improve selective-audit safety, and is the conclusion robust to monitor family, output budget, and reasoning resources?",
   "populations": {
