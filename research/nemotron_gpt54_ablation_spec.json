@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "registered_at": "2026-08-25",
-  "status": "four standard configurations and the Nemotron side-task-focused follow-up complete; GPT side-task-focused follow-up remains",
+  "status": "all four standard configurations and both side-task-focused follow-ups complete and validated",
   "seed": 20260809,
   "research_question": "Does main-task or exact-side-task context improve selective-audit safety, and is the conclusion robust to monitor family, output budget, and reasoning resources?",
   "populations": {
