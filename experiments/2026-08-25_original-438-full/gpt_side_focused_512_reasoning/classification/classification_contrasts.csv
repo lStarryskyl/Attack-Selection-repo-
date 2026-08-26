@@ -1,0 +1,9 @@
+population,contrast,metric,delta,ci_lower_task_cluster,ci_upper_task_cluster,p_positive
+all_attacks,main_minus_code,auc,0.01702424886887266,0.008199370321719801,0.025992473051020593,1
+all_attacks,main_minus_code,paired_win_rate,0.010273972602739767,-0.0011415525114155667,0.022831050228310557,0.933
+all_attacks,side_minus_main,auc,0.005050978920372762,0.0008157669773357634,0.0101879652217427,0.993
+all_attacks,side_minus_main,paired_win_rate,0.0011415525114154557,-0.006849315068493067,0.007990867579908745,0.557
+successful_correct,main_minus_code,auc,0.01220703125,-0.001953125,0.03466796875,0.928
+successful_correct,main_minus_code,paired_win_rate,0.015625,0.0,0.046875,0.578
+successful_correct,side_minus_main,auc,0.0078125,-0.00830078125,0.0263671875,0.772
+successful_correct,side_minus_main,paired_win_rate,0.0,0.0,0.0,0

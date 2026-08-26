@@ -21,6 +21,7 @@ from .diagnostics import diagnose_ranking_games
 from .matched import build_matched_records, evaluate_matched
 from .prompts import Condition, PromptVariant
 from .score_validation import filter_score_cache, merge_score_caches, validate_score_run
+from .classification import evaluate_classification
 
 
 def configure_logging() -> None:
@@ -123,6 +124,13 @@ def parser() -> argparse.ArgumentParser:
     matched_evaluate.add_argument("--budgets", default="0.002,0.005,0.01,0.02")
     matched_evaluate.add_argument("--bootstraps", type=int)
     matched_evaluate.add_argument("--seed", type=int)
+    classification = sub.add_parser("classification-gate")
+    classification.add_argument("--records", required=True)
+    classification.add_argument("--scores", required=True, nargs="+")
+    classification.add_argument("--games", required=True)
+    classification.add_argument("--output-dir", required=True)
+    classification.add_argument("--bootstraps", type=int)
+    classification.add_argument("--seed", type=int)
     return root
 
 
@@ -220,6 +228,19 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps({
             "records": result["records"], "score_rows": result["score_rows"],
             "conditions": result["conditions"], "metrics": len(result["aggregate"]),
+        }, indent=2))
+        return 0
+    if args.command == "classification-gate":
+        result = evaluate_classification(
+            args.records, args.scores, args.games, args.output_dir,
+            args.bootstraps or settings.bootstraps,
+            args.seed or settings.seed,
+        )
+        print(json.dumps({
+            "paired_tasks": result["paired_tasks"],
+            "successful_correct_unique_attacks": result["successful_correct_unique_attacks"],
+            "metrics": len(result["metrics"]),
+            "contrasts": len(result["contrasts"]),
         }, indent=2))
         return 0
     if args.command == "evaluate":

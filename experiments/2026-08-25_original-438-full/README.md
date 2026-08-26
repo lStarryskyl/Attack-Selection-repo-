@@ -68,3 +68,8 @@ threat approximations premised on a proven oracle gap.
 contrast. Each configuration directory contains raw prompts/responses, token and
 retry metadata, validation, fold-level FPR/detection, plots, and a standalone
 methodology/result README.
+
+The cached paired ROC analysis is reported in `CLASSIFICATION_FOLLOWUP.md`. It
+confirms that focused side-task prompts strongly improve attack-versus-honest
+discrimination, while explaining why that does not imply better ordering within
+the red team's already suspicious submitted pool.

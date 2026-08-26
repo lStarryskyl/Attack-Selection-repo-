@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "status": "blocked only on a configured GPT-4.1 Nano deployment/API credential",
+  "objective": "Model-controlled replication of the original-438 three-arm information ablation with GPT-4.1 Nano",
+  "dataset": "experiments/2026-08-25_original-438-smoke/data/matched_original_438.jsonl",
+  "smoke_dataset": "experiments/2026-08-25_original-438-smoke/data/smoke_30.jsonl",
+  "conditions": ["code_only", "code_main", "code_main_side"],
+  "prompt_variant": "standard",
+  "max_output_tokens": 180,
+  "reasoning": "none",
+  "temperature": "provider default for GPT-4.1 Nano; record resolved settings in manifest",
+  "seed": 20260809,
+  "bootstraps": 1000,
+  "audit_budgets": [0.002, 0.005, 0.01, 0.02],
+  "required_sequence": [
+    "Configure an Azure deployment named for GPT-4.1 Nano or an OpenAI API key with GPT-4.1 Nano access",
+    "Run the frozen 30-task smoke set and validate model identity, parsing, token use, and score saturation",
+    "Report projected full-run usage and obtain explicit confirmation for the paid full run",
+    "Score all 876 matched records under all three conditions",
+    "Validate the 2628-row cache",
+    "Run fixed-paper-audit ranking, held-out FPR/detection, and paired classification analyses",
+    "Publish raw scores, manifests, metrics, plots, and a standalone README"
+  ],
+  "primary_contrast": "code_main_side minus code_main fixed-k safety at 0.5% and 1%",
+  "decision_rule": "Treat side-task information as a robust explanation only if the paired attack-clustered interval is positive at a primary budget and the gain is not dominated by one repeated attack"
+}

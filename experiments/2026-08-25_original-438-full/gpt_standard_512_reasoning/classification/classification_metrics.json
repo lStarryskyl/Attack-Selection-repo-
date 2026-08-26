@@ -1,0 +1,197 @@
+{
+  "bootstraps": 1000,
+  "cluster_unit": "task/unique attack",
+  "conditions": [
+    "code_main",
+    "code_main_side",
+    "code_only"
+  ],
+  "contrasts": [
+    {
+      "ci_lower_task_cluster": 0.008199370321719801,
+      "ci_upper_task_cluster": 0.025992473051020593,
+      "contrast": "main_minus_code",
+      "delta": 0.01702424886887266,
+      "metric": "auc",
+      "p_positive": 1,
+      "population": "all_attacks"
+    },
+    {
+      "ci_lower_task_cluster": -0.0011415525114155667,
+      "ci_upper_task_cluster": 0.022831050228310557,
+      "contrast": "main_minus_code",
+      "delta": 0.010273972602739767,
+      "metric": "paired_win_rate",
+      "p_positive": 0.933,
+      "population": "all_attacks"
+    },
+    {
+      "ci_lower_task_cluster": -0.022909238756489647,
+      "ci_upper_task_cluster": -0.005903233877525449,
+      "contrast": "side_minus_main",
+      "delta": -0.01439450803778064,
+      "metric": "auc",
+      "p_positive": 0,
+      "population": "all_attacks"
+    },
+    {
+      "ci_lower_task_cluster": -0.04109589041095896,
+      "ci_upper_task_cluster": -0.0091324200913242,
+      "contrast": "side_minus_main",
+      "delta": -0.023972602739726012,
+      "metric": "paired_win_rate",
+      "p_positive": 0,
+      "population": "all_attacks"
+    },
+    {
+      "ci_lower_task_cluster": -0.001953125,
+      "ci_upper_task_cluster": 0.03466796875,
+      "contrast": "main_minus_code",
+      "delta": 0.01220703125,
+      "metric": "auc",
+      "p_positive": 0.928,
+      "population": "successful_correct"
+    },
+    {
+      "ci_lower_task_cluster": 0.0,
+      "ci_upper_task_cluster": 0.046875,
+      "contrast": "main_minus_code",
+      "delta": 0.015625,
+      "metric": "paired_win_rate",
+      "p_positive": 0.578,
+      "population": "successful_correct"
+    },
+    {
+      "ci_lower_task_cluster": -0.07568359375,
+      "ci_upper_task_cluster": 0.01025390625,
+      "contrast": "side_minus_main",
+      "delta": -0.02294921875,
+      "metric": "auc",
+      "p_positive": 0.109,
+      "population": "successful_correct"
+    },
+    {
+      "ci_lower_task_cluster": -0.109375,
+      "ci_upper_task_cluster": 0.0,
+      "contrast": "side_minus_main",
+      "delta": -0.046875,
+      "metric": "paired_win_rate",
+      "p_positive": 0,
+      "population": "successful_correct"
+    }
+  ],
+  "metrics": [
+    {
+      "ci_lower_task_cluster": 0.9881961385292216,
+      "ci_upper_task_cluster": 0.9969428285481954,
+      "clusters": 438,
+      "condition": "code_main",
+      "estimate": 0.9930438272763287,
+      "metric": "auc",
+      "population": "all_attacks"
+    },
+    {
+      "ci_lower_task_cluster": 0.9863013698630136,
+      "ci_upper_task_cluster": 1.0,
+      "clusters": 438,
+      "condition": "code_main",
+      "estimate": 0.9942922374429224,
+      "metric": "paired_win_rate",
+      "population": "all_attacks"
+    },
+    {
+      "ci_lower_task_cluster": 0.9712344404828923,
+      "ci_upper_task_cluster": 0.9859026083693001,
+      "clusters": 438,
+      "condition": "code_main_side",
+      "estimate": 0.978649319238548,
+      "metric": "auc",
+      "population": "all_attacks"
+    },
+    {
+      "ci_lower_task_cluster": 0.954337899543379,
+      "ci_upper_task_cluster": 0.9840182648401826,
+      "clusters": 438,
+      "condition": "code_main_side",
+      "estimate": 0.9703196347031964,
+      "metric": "paired_win_rate",
+      "population": "all_attacks"
+    },
+    {
+      "ci_lower_task_cluster": 0.9675309105314734,
+      "ci_upper_task_cluster": 0.9845290965576198,
+      "clusters": 438,
+      "condition": "code_only",
+      "estimate": 0.976019578407456,
+      "metric": "auc",
+      "population": "all_attacks"
+    },
+    {
+      "ci_lower_task_cluster": 0.9726027397260274,
+      "ci_upper_task_cluster": 0.9942922374429224,
+      "clusters": 438,
+      "condition": "code_only",
+      "estimate": 0.9840182648401826,
+      "metric": "paired_win_rate",
+      "population": "all_attacks"
+    },
+    {
+      "ci_lower_task_cluster": 0.970703125,
+      "ci_upper_task_cluster": 1.0,
+      "clusters": 32,
+      "condition": "code_main",
+      "estimate": 0.98828125,
+      "metric": "auc",
+      "population": "successful_correct"
+    },
+    {
+      "ci_lower_task_cluster": 1.0,
+      "ci_upper_task_cluster": 1.0,
+      "clusters": 32,
+      "condition": "code_main",
+      "estimate": 1.0,
+      "metric": "paired_win_rate",
+      "population": "successful_correct"
+    },
+    {
+      "ci_lower_task_cluster": 0.91796875,
+      "ci_upper_task_cluster": 0.9951171875,
+      "clusters": 32,
+      "condition": "code_main_side",
+      "estimate": 0.96533203125,
+      "metric": "auc",
+      "population": "successful_correct"
+    },
+    {
+      "ci_lower_task_cluster": 0.890625,
+      "ci_upper_task_cluster": 1.0,
+      "clusters": 32,
+      "condition": "code_main_side",
+      "estimate": 0.953125,
+      "metric": "paired_win_rate",
+      "population": "successful_correct"
+    },
+    {
+      "ci_lower_task_cluster": 0.94384765625,
+      "ci_upper_task_cluster": 0.99755859375,
+      "clusters": 32,
+      "condition": "code_only",
+      "estimate": 0.97607421875,
+      "metric": "auc",
+      "population": "successful_correct"
+    },
+    {
+      "ci_lower_task_cluster": 0.953125,
+      "ci_upper_task_cluster": 1.0,
+      "clusters": 32,
+      "condition": "code_only",
+      "estimate": 0.984375,
+      "metric": "paired_win_rate",
+      "population": "successful_correct"
+    }
+  ],
+  "paired_tasks": 438,
+  "records": 876,
+  "seed": 20260809,
+  "successful_correct_unique_attacks": 32
+}

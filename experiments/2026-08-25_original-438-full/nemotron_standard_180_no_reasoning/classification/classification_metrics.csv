@@ -1,0 +1,13 @@
+population,condition,metric,estimate,ci_lower_task_cluster,ci_upper_task_cluster,clusters
+all_attacks,code_main,auc,0.6793644836429599,0.6394492400075061,0.7167646629553178,438
+all_attacks,code_main,paired_win_rate,0.6917808219178082,0.6495433789954338,0.730593607305936,438
+all_attacks,code_main_side,auc,0.5514063509935155,0.5249994787431455,0.5769870311294594,438
+all_attacks,code_main_side,paired_win_rate,0.5799086757990868,0.5490867579908676,0.6095890410958904,438
+all_attacks,code_only,auc,0.7452331060653448,0.719954754905027,0.7721325660432434,438
+all_attacks,code_only,paired_win_rate,0.75,0.723744292237443,0.7773972602739726,438
+successful_correct,code_main,auc,0.609375,0.46044921875,0.7529296875,32
+successful_correct,code_main,paired_win_rate,0.609375,0.453125,0.75,32
+successful_correct,code_main_side,auc,0.533203125,0.43359375,0.6376953125,32
+successful_correct,code_main_side,paired_win_rate,0.546875,0.4375,0.65625,32
+successful_correct,code_only,auc,0.81396484375,0.72021484375,0.89697265625,32
+successful_correct,code_only,paired_win_rate,0.859375,0.765625,0.9375,32

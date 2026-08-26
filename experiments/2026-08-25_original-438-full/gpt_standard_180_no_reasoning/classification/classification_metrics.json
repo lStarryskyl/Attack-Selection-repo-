@@ -1,0 +1,197 @@
+{
+  "bootstraps": 1000,
+  "cluster_unit": "task/unique attack",
+  "conditions": [
+    "code_main",
+    "code_main_side",
+    "code_only"
+  ],
+  "contrasts": [
+    {
+      "ci_lower_task_cluster": 0.016508204582890262,
+      "ci_upper_task_cluster": 0.037483580409082395,
+      "contrast": "main_minus_code",
+      "delta": 0.026273951752465496,
+      "metric": "auc",
+      "p_positive": 1,
+      "population": "all_attacks"
+    },
+    {
+      "ci_lower_task_cluster": 0.006849315068493178,
+      "ci_upper_task_cluster": 0.03424657534246578,
+      "contrast": "main_minus_code",
+      "delta": 0.020547945205479534,
+      "metric": "paired_win_rate",
+      "p_positive": 0.998,
+      "population": "all_attacks"
+    },
+    {
+      "ci_lower_task_cluster": -0.02695419194762405,
+      "ci_upper_task_cluster": -0.011188778382435816,
+      "contrast": "side_minus_main",
+      "delta": -0.018885135839536327,
+      "metric": "auc",
+      "p_positive": 0,
+      "population": "all_attacks"
+    },
+    {
+      "ci_lower_task_cluster": -0.03767123287671226,
+      "ci_upper_task_cluster": -0.005707762557077722,
+      "contrast": "side_minus_main",
+      "delta": -0.020547945205479534,
+      "metric": "paired_win_rate",
+      "p_positive": 0.003,
+      "population": "all_attacks"
+    },
+    {
+      "ci_lower_task_cluster": 0.0,
+      "ci_upper_task_cluster": 0.05224609375,
+      "contrast": "main_minus_code",
+      "delta": 0.01953125,
+      "metric": "auc",
+      "p_positive": 0.945,
+      "population": "successful_correct"
+    },
+    {
+      "ci_lower_task_cluster": 0.0,
+      "ci_upper_task_cluster": 0.046875,
+      "contrast": "main_minus_code",
+      "delta": 0.015625,
+      "metric": "paired_win_rate",
+      "p_positive": 0.634,
+      "population": "successful_correct"
+    },
+    {
+      "ci_lower_task_cluster": -0.13037109375,
+      "ci_upper_task_cluster": -0.017578125,
+      "contrast": "side_minus_main",
+      "delta": -0.06640625,
+      "metric": "auc",
+      "p_positive": 0,
+      "population": "successful_correct"
+    },
+    {
+      "ci_lower_task_cluster": -0.09375,
+      "ci_upper_task_cluster": 0.0,
+      "contrast": "side_minus_main",
+      "delta": -0.03125,
+      "metric": "paired_win_rate",
+      "p_positive": 0,
+      "population": "successful_correct"
+    }
+  ],
+  "metrics": [
+    {
+      "ci_lower_task_cluster": 0.990995287838035,
+      "ci_upper_task_cluster": 0.997190425554096,
+      "clusters": 438,
+      "condition": "code_main",
+      "estimate": 0.9943834573924647,
+      "metric": "auc",
+      "population": "all_attacks"
+    },
+    {
+      "ci_lower_task_cluster": 0.9840182648401826,
+      "ci_upper_task_cluster": 0.997716894977169,
+      "clusters": 438,
+      "condition": "code_main",
+      "estimate": 0.9920091324200914,
+      "metric": "paired_win_rate",
+      "population": "all_attacks"
+    },
+    {
+      "ci_lower_task_cluster": 0.9674813911302934,
+      "ci_upper_task_cluster": 0.9828610746231313,
+      "clusters": 438,
+      "condition": "code_main_side",
+      "estimate": 0.9754983215529284,
+      "metric": "auc",
+      "population": "all_attacks"
+    },
+    {
+      "ci_lower_task_cluster": 0.9554794520547946,
+      "ci_upper_task_cluster": 0.9851598173515982,
+      "clusters": 438,
+      "condition": "code_main_side",
+      "estimate": 0.9714611872146118,
+      "metric": "paired_win_rate",
+      "population": "all_attacks"
+    },
+    {
+      "ci_lower_task_cluster": 0.9566236108504826,
+      "ci_upper_task_cluster": 0.9785893747002773,
+      "clusters": 438,
+      "condition": "code_only",
+      "estimate": 0.9681095056399992,
+      "metric": "auc",
+      "population": "all_attacks"
+    },
+    {
+      "ci_lower_task_cluster": 0.95662100456621,
+      "ci_upper_task_cluster": 0.9840182648401826,
+      "clusters": 438,
+      "condition": "code_only",
+      "estimate": 0.9714611872146118,
+      "metric": "paired_win_rate",
+      "population": "all_attacks"
+    },
+    {
+      "ci_lower_task_cluster": 0.98388671875,
+      "ci_upper_task_cluster": 1.0,
+      "clusters": 32,
+      "condition": "code_main",
+      "estimate": 0.9951171875,
+      "metric": "auc",
+      "population": "successful_correct"
+    },
+    {
+      "ci_lower_task_cluster": 1.0,
+      "ci_upper_task_cluster": 1.0,
+      "clusters": 32,
+      "condition": "code_main",
+      "estimate": 1.0,
+      "metric": "paired_win_rate",
+      "population": "successful_correct"
+    },
+    {
+      "ci_lower_task_cluster": 0.86376953125,
+      "ci_upper_task_cluster": 0.9775390625,
+      "clusters": 32,
+      "condition": "code_main_side",
+      "estimate": 0.9287109375,
+      "metric": "auc",
+      "population": "successful_correct"
+    },
+    {
+      "ci_lower_task_cluster": 0.90625,
+      "ci_upper_task_cluster": 1.0,
+      "clusters": 32,
+      "condition": "code_main_side",
+      "estimate": 0.96875,
+      "metric": "paired_win_rate",
+      "population": "successful_correct"
+    },
+    {
+      "ci_lower_task_cluster": 0.93408203125,
+      "ci_upper_task_cluster": 1.0,
+      "clusters": 32,
+      "condition": "code_only",
+      "estimate": 0.9755859375,
+      "metric": "auc",
+      "population": "successful_correct"
+    },
+    {
+      "ci_lower_task_cluster": 0.953125,
+      "ci_upper_task_cluster": 1.0,
+      "clusters": 32,
+      "condition": "code_only",
+      "estimate": 0.984375,
+      "metric": "paired_win_rate",
+      "population": "successful_correct"
+    }
+  ],
+  "paired_tasks": 438,
+  "records": 876,
+  "seed": 20260809,
+  "successful_correct_unique_attacks": 32
+}
