@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="460" viewBox="0 0 760 460">
+<rect width="100%" height="100%" fill="white"/>
+<line x1="80" y1="395.0" x2="735" y2="395.0" stroke="#dddddd"/>
+<text x="70" y="399.0" text-anchor="end" font-family="Arial" font-size="12">0.38</text>
+<line x1="80" y1="323.0" x2="735" y2="323.0" stroke="#dddddd"/>
+<text x="70" y="327.0" text-anchor="end" font-family="Arial" font-size="12">0.51</text>
+<line x1="80" y1="251.0" x2="735" y2="251.0" stroke="#dddddd"/>
+<text x="70" y="255.0" text-anchor="end" font-family="Arial" font-size="12">0.64</text>
+<line x1="80" y1="179.0" x2="735" y2="179.0" stroke="#dddddd"/>
+<text x="70" y="183.0" text-anchor="end" font-family="Arial" font-size="12">0.77</text>
+<line x1="80" y1="107.0" x2="735" y2="107.0" stroke="#dddddd"/>
+<text x="70" y="111.0" text-anchor="end" font-family="Arial" font-size="12">0.90</text>
+<line x1="80" y1="35.0" x2="735" y2="35.0" stroke="#dddddd"/>
+<text x="70" y="39.0" text-anchor="end" font-family="Arial" font-size="12">1.04</text>
+<polyline points="80.0,365.6 189.2,279.5 371.1,206.8 735.0,102.3" fill="none" stroke="#1769aa" stroke-width="2.5"/>
+<circle cx="80.0" cy="365.6" r="4" fill="#1769aa"/>
+<circle cx="189.2" cy="279.5" r="4" fill="#1769aa"/>
+<circle cx="371.1" cy="206.8" r="4" fill="#1769aa"/>
+<circle cx="735.0" cy="102.3" r="4" fill="#1769aa"/>
+<rect x="540" y="30" width="16" height="3" fill="#1769aa"/>
+<text x="562" y="35" font-family="Arial" font-size="12">flat</text>
+<polyline points="80.0,369.2 189.2,288.7 371.1,227.5 735.0,114.5" fill="none" stroke="#d1495b" stroke-width="2.5"/>
+<circle cx="80.0" cy="369.2" r="4" fill="#d1495b"/>
+<circle cx="189.2" cy="288.7" r="4" fill="#d1495b"/>
+<circle cx="371.1" cy="227.5" r="4" fill="#d1495b"/>
+<circle cx="735.0" cy="114.5" r="4" fill="#d1495b"/>
+<rect x="540" y="52" width="16" height="3" fill="#d1495b"/>
+<text x="562" y="57" font-family="Arial" font-size="12">monitor:code_main</text>
+<polyline points="80.0,363.5 189.2,277.6 371.1,220.5 735.0,118.7" fill="none" stroke="#2a9d8f" stroke-width="2.5"/>
+<circle cx="80.0" cy="363.5" r="4" fill="#2a9d8f"/>
+<circle cx="189.2" cy="277.6" r="4" fill="#2a9d8f"/>
+<circle cx="371.1" cy="220.5" r="4" fill="#2a9d8f"/>
+<circle cx="735.0" cy="118.7" r="4" fill="#2a9d8f"/>
+<rect x="540" y="74" width="16" height="3" fill="#2a9d8f"/>
+<text x="562" y="79" font-family="Arial" font-size="12">monitor:code_main_side</text>
+<polyline points="80.0,370.2 189.2,283.9 371.1,222.6 735.0,116.0" fill="none" stroke="#7b2cbf" stroke-width="2.5"/>
+<circle cx="80.0" cy="370.2" r="4" fill="#7b2cbf"/>
+<circle cx="189.2" cy="283.9" r="4" fill="#7b2cbf"/>
+<circle cx="371.1" cy="222.6" r="4" fill="#7b2cbf"/>
+<circle cx="735.0" cy="116.0" r="4" fill="#7b2cbf"/>
+<rect x="540" y="96" width="16" height="3" fill="#7b2cbf"/>
+<text x="562" y="101" font-family="Arial" font-size="12">monitor:code_only</text>
+<polyline points="80.0,317.9 189.2,198.4 371.1,143.1 735.0,59.8" fill="none" stroke="#1769aa" stroke-width="2.5"/>
+<circle cx="80.0" cy="317.9" r="4" fill="#1769aa"/>
+<circle cx="189.2" cy="198.4" r="4" fill="#1769aa"/>
+<circle cx="371.1" cy="143.1" r="4" fill="#1769aa"/>
+<circle cx="735.0" cy="59.8" r="4" fill="#1769aa"/>
+<rect x="540" y="118" width="16" height="3" fill="#1769aa"/>
+<text x="562" y="123" font-family="Arial" font-size="12">oracle_q_rt</text>
+<polyline points="80.0,345.9 189.2,252.0 371.1,192.3 735.0,94.6" fill="none" stroke="#d1495b" stroke-width="2.5"/>
+<circle cx="80.0" cy="345.9" r="4" fill="#d1495b"/>
+<circle cx="189.2" cy="252.0" r="4" fill="#d1495b"/>
+<circle cx="371.1" cy="192.3" r="4" fill="#d1495b"/>
+<circle cx="735.0" cy="94.6" r="4" fill="#d1495b"/>
+<rect x="540" y="140" width="16" height="3" fill="#d1495b"/>
+<text x="562" y="145" font-family="Arial" font-size="12">random</text>
+<line x1="80" y1="395" x2="735" y2="395" stroke="#333"/>
+<line x1="80" y1="35" x2="80" y2="395" stroke="#333"/>
+<text x="407.5" y="440" text-anchor="middle" font-family="Arial" font-size="14">Audit budget (%)</text>
+<text x="20" y="230.0" transform="rotate(-90 20 230.0)" text-anchor="middle" font-family="Arial" font-size="14">Deployment-game safety</text>
+</svg>
