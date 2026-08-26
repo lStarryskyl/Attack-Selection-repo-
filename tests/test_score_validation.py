@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 
-from oracle_gap.score_validation import filter_score_cache, validate_score_run
+from oracle_gap.score_validation import filter_score_cache, merge_score_caches, validate_score_run
 from oracle_gap.schema import AttackRecord
 
 
@@ -90,3 +90,26 @@ def test_filter_score_cache_keeps_only_requested_records(tmp_path):
     result = filter_score_cache(records, source, output)
     assert result["selected_score_rows"] == 1
     assert json.loads(output.read_text(encoding="utf-8"))["record_id"] == record_id
+
+
+def test_merge_score_caches_later_prompt_replaces_only_matching_arm(tmp_path):
+    standard = tmp_path / "standard.jsonl"
+    focused = tmp_path / "focused.jsonl"
+    output = tmp_path / "merged.jsonl"
+    standard.write_text(
+        json.dumps({"record_id": "r1", "condition": "code_main", "prompt_variant": "standard"}) + "\n" +
+        json.dumps({"record_id": "r1", "condition": "code_main_side", "prompt_variant": "standard"}) + "\n",
+        encoding="utf-8",
+    )
+    focused.write_text(
+        json.dumps({"record_id": "r1", "condition": "code_main_side", "prompt_variant": "side_task_focused"}) + "\n",
+        encoding="utf-8",
+    )
+    result = merge_score_caches([standard, focused], output)
+    rows = [json.loads(line) for line in output.read_text(encoding="utf-8").splitlines()]
+    assert result["output_score_rows"] == 2
+    assert result["replaced_pairs"] == 1
+    assert {row["condition"]: row["prompt_variant"] for row in rows} == {
+        "code_main": "standard",
+        "code_main_side": "side_task_focused",
+    }

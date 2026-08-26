@@ -114,3 +114,42 @@ def filter_score_cache(
         "selected_score_rows": len(selected),
         "selected_record_ids": len({str(row.get("record_id")) for row in selected}),
     }
+
+
+def merge_score_caches(
+    source_scores_paths: list[str | Path],
+    output_scores_path: str | Path,
+) -> dict[str, Any]:
+    """Merge score caches, with later sources replacing the same record/condition.
+
+    Replacement is explicit so a follow-up prompt can reuse frozen control arms
+    while replacing only its intervention arm. The report records every replaced
+    pair and its old/new prompt variants.
+    """
+    merged: dict[tuple[str, str], dict[str, Any]] = {}
+    replacements: list[dict[str, str]] = []
+    source_rows: dict[str, int] = {}
+    for source in source_scores_paths:
+        rows = read_rows(source)
+        source_rows[str(source)] = len(rows)
+        for row in rows:
+            pair = (str(row.get("record_id")), str(row.get("condition")))
+            if pair in merged:
+                replacements.append({
+                    "record_id": pair[0],
+                    "condition": pair[1],
+                    "old_prompt_variant": str(merged[pair].get("prompt_variant")),
+                    "new_prompt_variant": str(row.get("prompt_variant")),
+                })
+            merged[pair] = row
+    rows = [merged[pair] for pair in sorted(merged)]
+    write_jsonl(output_scores_path, rows)
+    return {
+        "sources": source_rows,
+        "output_score_rows": len(rows),
+        "replaced_pairs": len(replacements),
+        "replacement_summary": dict(Counter(
+            f"{row['condition']}:{row['old_prompt_variant']}->{row['new_prompt_variant']}"
+            for row in replacements
+        )),
+    }
